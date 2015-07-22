@@ -22,97 +22,175 @@
                 <img src="themes/warsawjs/pictures/logo.png">
             </div>
             <div class="content">
-                <h2>WarsawJS Presentation Template</h2>
-                <p>Author Name <a href="http://twitter.com/author">@author</a>
+                <h2>Angular 2 – krótkie wprowadzenie</h2>
+                <p>Mateusz Kocz <a href="https://twitter.com/mateuszkocz">@mateuszkocz</a>
             </div>
         </div>
     </section>
 
     <section class="slide">
         <div>
-            <h2>Plain Text on Your Slides</h2>
-
-            <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco
-                laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in
-                reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.
-            </p>
+            <h2>Evolution or revolution?</h2>
         </div>
     </section>
 
     <section class="slide">
         <div>
-            <h2>All Kind of Lists</h2>
-            <ol>
-                <li>Simple lists are marked with bullets</li>
-                <li>Ordered lists begin with a number</li>
-                <li>You can even nest lists one inside another
-                    <ul>
-                        <li>Or mix their types</li>
-                        <li>But do not go too far</li>
-                        <li>Otherwise audience will be bored</li>
-                    </ul>
-                </li>
-                <li>Look, seven rows exactly!</li>
-            </ol>
+            <h2>Evolution or <span style="text-decoration: underline">revolution</span>?</h2>
         </div>
     </section>
 
     <section class="slide">
         <div>
-            <h2>JavaScript Samples</h2>
+            <h2>Still a work in progress</h2>
+
+            <p class="next">Currently in the alpha state. Tested internally by Google.</p>
+            <p class="next">Not ready for production.</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>What is Angular 2 all about?</h2>
+
+            <ul>
+                <li class="next">Mobile devices</li>
+                <li class="next">Evergreen browsers (and old Android)</li>
+                <li class="next">Slimming down</li>
+                <li class="next">Uses TypeScript and EcmaScript 6</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>No longer in Angular 2</h2>
+            <ul>
+                <li class="next">controllers (responsibilities taken by components)</li>
+                <li class="next">$scope and it's methods</li>
+                <li class="next">directives as we know them today</li>
+                <li class="next">jqLite</li>
+                <li class="next">services, modules, multiple ng-* directives, config and run phases</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
             <pre>
-                <code><mark class="comment">// Crockford style IIFE</mark></code>
-                <code>(function () {</code>
-                <code>  var <mark>someVar</mark> = 'value';</code>
-                <code>  console.<mark class="important">log</mark>(someVar);</code>
-                <code>}());</code>
+                <code><mark class="comment">&lt;!-- Template --></mark></code>
+                <code>&lt;app></code>
+                <code>  Hello {{ user.name }}!</code>
+                <code>  &lt;profile-picture</code>
+                <code>    <mark>#urerpic</mark></code>
+                <code>    title="My picture"</code>
+                <code>    <mark>[url]</mark>="user.picture">&lt;profile-picture></code>
+                <code>  &lt;remove-picture <mark>(click)</mark>="removePicture(<mark>userpic</mark>)">&lt;/remove-picture></code>
+                <code>&lt;/app></code>
             </pre>
         </div>
     </section>
+
     <section class="slide">
         <div>
-            <h2>Even Tables</h2>
-            <table>
-                <tr>
-                    <th scope="col">Locavore</th>
-                    <th>Umami</th>
-                    <th>Helvetica</th>
-                    <th>Vegan</th>
-                </tr>
-                <tr>
-                    <th scope="row">Fingerstache</th>
-                    <td>Kale</td>
-                    <td>Chips</td>
-                    <td>Keytar</td>
-                </tr>
-                <tr>
-                    <th scope="row">Sriracha</th>
-                    <td>Gluten-free</td>
-                    <td>Ennui</td>
-                    <td>Keffiyeh</td>
-                </tr>
-                <tr>
-                    <th scope="row">Thundercats</th>
-                    <td>Jean</td>
-                    <td>Shorts</td>
-                    <td>Biodiesel</td>
-                </tr>
-                <tr>
-                    <th scope="row">Terry</th>
-                    <td>Richardson</td>
-                    <td>Swag</td>
-                    <td>Blog</td>
-                </tr>
-            </table>
-            <p>It’s good to have information organized.</p>
+            <pre>
+                <code><mark class="comment">// Component</mark></code>
+                <code>import {Component, View} from 'angular2/angular2'</code>
+                <code><mark>@Component</mark>({</code>
+                <code>  selector: 'profile-picture',</code>
+                <code>  properties: ['url']</code>
+                <code>})</code>
+                <code><mark>@View</mark>({</code>
+                <code>  inline: '&lt;img <mark>[src]</mark>="{{ url }}" [alt]="info"></code>
+                <code>})</code>
+                <code>export class ProfilePicture{ /* ... */ }</code>
+            </pre>
         </div>
     </section>
 
-    <section class="slide cover">
+    <section class="slide">
         <div>
-            <img src="./themes/warsawjs/pictures/bigphoto.jpg" alt="">
+            <pre>
+                <code>@Component (/* ... */)</code>
+                <code>@View (/* ... */)</code>
+                <code>&nbsp;</code>
+                <code><mark class="comment">// Class</mark></code>
+                <code>export <mark>class</mark> ProfilePicture {</code>
+                <code>  constructor(<mark>getSize:PicturesSizing</mark>) {</code>
+                <code>    this.info = 'User picutre';</code>
+                <code>    this.size = getSize('user-pic');</code>
+                <code>  }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <pre>
+                <code>import {FormBuilder, Validators, FormDirectives,</code>
+                <code>        ControlGroups} from 'angular2/forms'</code>
+                <code><mark class="comment">// @Component & @View</mark></code>
+                <code>export class ComponentWithForms {</code>
+                <code>  constructor(<mark>form:FormBuilder</mark>) {</code>
+                <code>    this.inputs = <mark>form.group</mark>({</code>
+                <code>      name: ["initial value", <mark>Validators</mark>.required]</code>
+                <code>    })</code>
+                <code>  }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Attribute directives are still there</h2>
+            <pre class="next" style="margin-bottom: 20px"><code>export class Component extends Directive</code></pre>
+            <pre class="next">
+                <code>@Directive({</code>
+                <code>  selector: <mark>'[add-action-to-element]'</mark></code>
+                <code>})</code>
+                <code>export class ActionAdder {</code>
+                <code>  constructor(<mark>element:Element</mark>) {</code>
+                <code>    <mark class="comment">// Do something with the element</mark></code>
+                <code>  }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>What about services?</h2>
+            <p class="next" style="margin-bottom: 20px;">Angular will no longer provide any frame for services. Instead, they will be plain old JavaScript <i>[place your type here]</i>.</p>
+            <pre class="next">
+                <code><mark class="comment">// A service's example</mark></code>
+                <code>export SomeBusinessLogic {</code>
+                <code>  addTwoNumbers(number1:number, number2:number):number {</code>
+                <code>    return number1 + number2;</code>
+                <code>  }</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Will not tell about:</h2>
+
+            <ul>
+                <li>router,</li>
+                <li>http,</li>
+                <li>change detection,</li>
+                <li>tests.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Questions?</h2>
+            <h2 class="next">Thank you!</h2>
         </div>
     </section>
 
